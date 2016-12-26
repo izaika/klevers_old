@@ -545,7 +545,7 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # Setup Kohana routes
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /nuno
+	RewriteBase /klevers
 
 	RewriteRule assets/tmp/(.+)/.+ assets/tmp/$1 [R,L]
 	RewriteRule assets/(.+)/(.+)-(.+)-(.+)/.*\.(.+) assets/$1/$2/$3/$4.$5 [PT,L]

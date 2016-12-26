@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.22, for osx10.8 (x86_64)
 --
--- Host: localhost    Database: nuno
+-- Host: localhost    Database: klevers
 -- ------------------------------------------------------
 -- Server version	5.6.22
 
@@ -64,7 +64,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `about_blocks_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `about_blocks_BeforeInsert`
 				BEFORE INSERT
 				ON `about_blocks`
 					FOR EACH ROW
@@ -83,7 +83,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `about_blocks_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `about_blocks_BeforeUpdate`
 				BEFORE UPDATE
 				ON `about_blocks`
 					FOR EACH ROW
@@ -211,7 +211,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `article_images_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `article_images_BeforeInsert`
 				BEFORE INSERT
 				ON `article_images`
 					FOR EACH ROW
@@ -230,7 +230,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `article_images_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `article_images_BeforeUpdate`
 				BEFORE UPDATE
 				ON `article_images`
 					FOR EACH ROW
@@ -293,7 +293,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `articles_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `articles_BeforeInsert`
 				BEFORE INSERT
 				ON `articles`
 					FOR EACH ROW
@@ -312,7 +312,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `articles_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `articles_BeforeUpdate`
 				BEFORE UPDATE
 				ON `articles`
 					FOR EACH ROW
@@ -414,7 +414,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `categories_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `categories_BeforeInsert`
 				BEFORE INSERT
 				ON `categories`
 					FOR EACH ROW
@@ -433,7 +433,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `categories_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `categories_BeforeUpdate`
 				BEFORE UPDATE
 				ON `categories`
 					FOR EACH ROW
@@ -526,7 +526,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `categories_projects_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `categories_projects_BeforeInsert`
 				BEFORE INSERT
 				ON `categories_projects`
 					FOR EACH ROW
@@ -545,7 +545,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `categories_projects_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `categories_projects_BeforeUpdate`
 				BEFORE UPDATE
 				ON `categories_projects`
 					FOR EACH ROW
@@ -600,7 +600,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `cp_items_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `cp_items_BeforeInsert`
 				BEFORE INSERT
 				ON `cp_items`
 					FOR EACH ROW
@@ -619,7 +619,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `cp_items_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `cp_items_BeforeUpdate`
 				BEFORE UPDATE
 				ON `cp_items`
 					FOR EACH ROW
@@ -677,7 +677,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `employees_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `employees_BeforeInsert`
 				BEFORE INSERT
 				ON `employees`
 					FOR EACH ROW
@@ -696,7 +696,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `employees_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `employees_BeforeUpdate`
 				BEFORE UPDATE
 				ON `employees`
 					FOR EACH ROW
@@ -747,7 +747,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `files_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `files_BeforeInsert`
 				BEFORE INSERT
 				ON `files`
 					FOR EACH ROW
@@ -766,7 +766,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `files_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `files_BeforeUpdate`
 				BEFORE UPDATE
 				ON `files`
 					FOR EACH ROW
@@ -818,7 +818,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `homeprojects_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `homeprojects_BeforeInsert`
 				BEFORE INSERT
 				ON `homeprojects`
 					FOR EACH ROW
@@ -837,7 +837,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `homeprojects_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `homeprojects_BeforeUpdate`
 				BEFORE UPDATE
 				ON `homeprojects`
 					FOR EACH ROW
@@ -900,7 +900,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `homeslides_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `homeslides_BeforeInsert`
 				BEFORE INSERT
 				ON `homeslides`
 					FOR EACH ROW
@@ -919,7 +919,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `homeslides_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `homeslides_BeforeUpdate`
 				BEFORE UPDATE
 				ON `homeslides`
 					FOR EACH ROW
@@ -1161,7 +1161,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `project_blocks_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `project_blocks_BeforeInsert`
 				BEFORE INSERT
 				ON `project_blocks`
 					FOR EACH ROW
@@ -1180,7 +1180,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `project_blocks_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `project_blocks_BeforeUpdate`
 				BEFORE UPDATE
 				ON `project_blocks`
 					FOR EACH ROW
@@ -1285,7 +1285,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `projects_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `projects_BeforeInsert`
 				BEFORE INSERT
 				ON `projects`
 					FOR EACH ROW
@@ -1304,7 +1304,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `projects_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `projects_BeforeUpdate`
 				BEFORE UPDATE
 				ON `projects`
 					FOR EACH ROW
@@ -2026,7 +2026,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `tags_BeforeInsert`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tags_BeforeInsert`
 				BEFORE INSERT
 				ON `tags`
 					FOR EACH ROW
@@ -2045,7 +2045,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`nuno`@`%`*/ /*!50003 TRIGGER `tags_BeforeUpdate`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tags_BeforeUpdate`
 				BEFORE UPDATE
 				ON `tags`
 					FOR EACH ROW
@@ -2160,4 +2160,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-18 16:39:06
+-- Dump completed on 2016-12-26 14:07:39

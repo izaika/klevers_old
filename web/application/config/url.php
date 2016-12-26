@@ -5,7 +5,6 @@ return [
 		'localhost',
 		'izaika.local',
 		'izaika.dev.sumy.net',
-		'nuno.srv4.modulez.no',
-		'nunoarkitektur.no'
+		'klevers.com.ua'
 	]
 ];

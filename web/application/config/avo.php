@@ -7,7 +7,7 @@ return array(
 	 * Random unique (per application) string
 	 *
 	 */
-	'cookie_salt' => 'nuno_2016_05',
+	'cookie_salt' => 'klevers_2016_12',
 
 
 	/**
@@ -68,8 +68,8 @@ return array(
 	 *
 	 */
 	'lost_reference_delete_queries' => [
-		'DELETE FROM articles WHERE is_new = 1 AND created <= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 2 DAY)',
-		'DELETE FROM projects WHERE is_new = 1 AND created <= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 2 DAY)',
+		// 'DELETE FROM articles WHERE is_new = 1 AND created <= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 2 DAY)',
+		// 'DELETE FROM projects WHERE is_new = 1 AND created <= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 2 DAY)',
 	],
 
 
@@ -78,12 +78,12 @@ return array(
 	 *
 	 */
 	'orphan_models' => [
-		'Model_About_Block',
-		'Model_Article_Image',
-		'Model_Article',
-		'Model_Employee',
-		'Model_Homeslide',
-		'Model_Project_Block',
-		'Model_Project',
+		// 'Model_About_Block',
+		// 'Model_Article_Image',
+		// 'Model_Article',
+		// 'Model_Employee',
+		// 'Model_Homeslide',
+		// 'Model_Project_Block',
+		// 'Model_Project',
 	],
 );
