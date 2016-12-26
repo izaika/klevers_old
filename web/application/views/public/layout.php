@@ -1,6 +1,6 @@
 <?php
 	$html_class = 'no-js';
-	$body_class = '';
+	$body_class = 'bp-wide';
 	$body_attributes = [
 		'data-base-url'	=> URL::site('/'),
 		'class'			=> $body_class

@@ -1,11 +1,15 @@
 <header>
 	<nav class="container-12">
-		<?= HTML::anchor('/', file_get_contents(DOCROOT.'img/logo.svg'), ['id' => 'logo']) ?>
-		<ul>
-			<li><?= HTML::anchor('/', 'Главная') ?></li>
-			<li><?= HTML::anchor('/products', 'Товары') ?></li>
-			<li><?= HTML::anchor('/about', 'О нас') ?></li>
-			<li><?= HTML::anchor('/contacts', 'Контакты') ?></li>
-		</ul>
+		<div class="grid-12">
+			<div class="wrap">
+				<?= HTML::anchor('/', file_get_contents(DOCROOT.'img/logo.svg'), ['id' => 'logo']) ?>
+				<ul><?php
+					?><li><?= HTML::anchor('/', 'Главная') ?></li><?php
+					?><li><?= HTML::anchor('/products', 'Товары') ?></li><?php
+					?><li><?= HTML::anchor('/about', 'О нас') ?></li><?php
+					?><li><?= HTML::anchor('/contacts', 'Контакты') ?></li><?php
+				?></ul>
+			</div>
+		</div>
 	</nav>
 </header>

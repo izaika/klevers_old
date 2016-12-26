@@ -1,0 +1,40 @@
+@import (reference) "_common.less";
+@import (reference) "../mixins.less";
+
+header {
+	background-color: @beige;
+	height: 150px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	.wrap {
+		.clearfix;
+		position: relative;
+		height: 100%;
+	}
+	ul {
+		display: block;
+		float: right;
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 50px;
+			a {
+				line-height: 150px;
+			}
+		}
+	}
+}
+#logo {
+	display: block;
+	width: 252px;
+	height: 70px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -35px;
+}
