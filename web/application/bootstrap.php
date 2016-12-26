@@ -1,0 +1,189 @@
+<?php defined('SYSPATH') OR die('No direct script access.');
+
+// -- Environment setup --------------------------------------------------------
+
+// Load the core Kohana class
+require SYSPATH.'classes/Kohana/Core'.EXT;
+require MODPATH.'avo/classes/Kohana'.EXT;
+require MODPATH.'avo/classes/Kohana/Exception'.EXT;
+require APPPATH.'vendor/autoload.php';
+
+
+/**
+ * Set the default time zone.
+ *
+ * @link http://kohanaframework.org/guide/using.configuration
+ * @link http://www.php.net/manual/timezones
+ */
+date_default_timezone_set('Europe/Oslo');
+
+/**
+ * Set the default locale.
+ *
+ * @link http://kohanaframework.org/guide/using.configuration
+ * @link http://www.php.net/manual/function.setlocale
+ */
+setlocale(LC_ALL, ((PHP_OS == 'Darwin') ? 'no_NO.utf-8' : 'nb_NO.utf-8'));
+
+/**
+ * Enable the Kohana auto-loader.
+ *
+ * @link http://kohanaframework.org/guide/using.autoloading
+ * @link http://www.php.net/manual/function.spl-autoload-register
+ */
+spl_autoload_register(array('Kohana', 'auto_load'));
+
+/**
+ * Optionally, you can enable a compatibility auto-loader for use with
+ * older modules that have not been updated for PSR-0.
+ *
+ * It is recommended to not enable this unless absolutely necessary.
+ */
+//spl_autoload_register(array('Kohana', 'auto_load_lowercase'));
+
+/**
+ * Enable the Kohana auto-loader for unserialization.
+ *
+ * @link http://www.php.net/manual/function.spl-autoload-call
+ * @link http://www.php.net/manual/var.configuration#unserialize-callback-func
+ */
+ini_set('unserialize_callback_func', 'spl_autoload_call');
+
+/**
+ * Set the mb_substitute_character to "none"
+ *
+ * @link http://www.php.net/manual/function.mb-substitute-character.php
+ */
+mb_substitute_character('none');
+
+// -- Configuration and initialization -----------------------------------------
+
+/**
+ * Set the default language
+ */
+I18n::lang('no');
+
+if (isset($_SERVER['SERVER_PROTOCOL']))
+{
+	// Replace the default protocol.
+	HTTP::$protocol = $_SERVER['SERVER_PROTOCOL'];
+}
+
+/**
+ * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
+ *
+ * Note: If you supply an invalid environment name, a PHP warning will be thrown
+ * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
+ */
+if (isset($_SERVER['KOHANA_ENV']))
+{
+	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
+}
+
+/**
+ * Initialize Kohana, setting the default options.
+ *
+ * The following options are available:
+ *
+ * - string   base_url    path, and optionally domain, of your application   NULL
+ * - string   index_file  name of your index file, usually "index.php"       index.php
+ * - string   charset     internal character set used for input and output   utf-8
+ * - string   cache_dir   set the internal cache directory                   APPPATH/cache
+ * - integer  cache_life  lifetime, in seconds, of items cached              60
+ * - boolean  errors      enable or disable error handling                   TRUE
+ * - boolean  profile     enable or disable internal profiling               TRUE
+ * - boolean  caching     enable or disable internal caching                 FALSE
+ * - boolean  expose      set the X-Powered-By header                        FALSE
+ */
+Kohana::init(array(
+	'base_url'		=> '/',
+	'index_file'	=> '',
+ 	'cache_life'	=> (Kohana::$environment == Kohana::DEVELOPMENT) ? 0 : 300, 		// instant for development and 5 minutes for production
+	'errors'		=> true,
+	'profile'		=> false,
+));
+
+/**
+ * Attach the file write to logging. Multiple writers are supported.
+ */
+Kohana::$log->attach(new Log_File(APPPATH.'logs'));
+
+/**
+ * Attach a file reader to config. Multiple readers are supported.
+ */
+Kohana::$config->attach(new Config_File);
+
+/**
+ * Enable modules. Modules are referenced by a relative or absolute path.
+ */
+Kohana::modules(array(
+// 	'profilertoolbar'	=> MODPATH.'profilertoolbar',	// ProfilerToolbar module
+	'avo'				=> MODPATH.'avo',				// AVO framework library
+	'swiftmailer'		=> MODPATH.'swiftmailer',		// SWIFTMailer framework library
+	'zend'				=> MODPATH.'zend',   			// Zend
+// 	'auth'				=> MODPATH.'auth',				// Basic authentication
+	'cache'				=> MODPATH.'cache',				// Caching with multiple backends
+	'database'			=> MODPATH.'database',			// Database access
+	'image'				=> MODPATH.'image',				// Image manipulation
+	'minion'			=> MODPATH.'minion',			// CLI Tasks
+	'orm'				=> MODPATH.'orm',				// Object Relationship Mapping
+	'htmlpurifier'		=> MODPATH.'htmlpurifier',		// HTMLPurifier
+));
+
+/**
+ * Cookie Salt
+ * @see  http://kohanaframework.org/3.3/guide/kohana/cookies
+ *
+ * If you have not defined a cookie salt in your Cookie class then
+ * uncomment the line below and define a preferrably long salt.
+ */
+Cookie::$salt = 'nuno_2016_05';
+
+
+/**
+ * override default driver for images
+ */
+Image::$default_driver = 'Imagick';
+
+/**
+ * Set the routes. Each route must have a minimum of a name, a URI and a set of
+ * defaults for the URI.
+ */
+Route::set('admin', 'admin(/<controller>(/<action>(/<id>(/<uid>(/<filename>)))))', ['uid' => '.*?', 'filename' => '.*?'])
+->defaults([
+	'directory'		=> 'admin',		'controller'	=> 'Settings',
+	'action'		=> 'index',
+]);
+
+Route::set('caticonfile', 'caticonfile/<id>/<uid>/<filename>', array('uid' => '.*?', 'filename' => '.*?'))
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'caticonfile',
+	));
+Route::set('catpdffile', 'catpdffile/<id>/<uid>/<filename>', array('uid' => '.*?', 'filename' => '.*?'))
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'catpdffile',
+	));
+Route::set('file', 'file/<id>/<uid>/<filename>', array('uid' => '.*?', 'filename' => '.*?'))
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'file',
+	));
+Route::set('om-oss', 'om-oss')
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'about',
+	));
+
+Route::set('http404', 'http404')
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'http404',
+	));
+
+Route::set('default', '(<action>(/<second_param>(/<third_param>)))', array('action' => '.*?', 'second_param' => '.*?', 'third_param' => '.*?'))
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'index',
+	));

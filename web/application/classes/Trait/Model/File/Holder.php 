@@ -1,0 +1,53 @@
+<?php
+trait Trait_Model_File_Holder
+{
+/*
+ *  must be defined manually
+	public static $FILE_STORAGE_PATH = 'assets/files/';
+	public static $file_uid_field_name 	= 'file_uid';
+	public static $file_name_field_name = 'file_name';
+	public static $file_size_field_name = 'file_size';
+*/
+	
+	/**
+	 * Returns an URL of the file
+	 *
+	 * @return string
+	 */
+	public function file_url()
+	{
+		$uid = $this->{static::$file_uid_field_name};
+		if (!$uid) return null;
+		return static::$FILE_STORAGE_PATH . $this->id . '-' . $uid . '/' . rawurlencode($this->{static::$file_name_field_name});
+	}
+
+
+	/**
+	 * Returns a storage path of the file
+	 *
+	 * @return string
+	 */
+	public function file_storage()
+	{
+		return static::get_file_storage_base() . $this->id . '/';
+	}
+
+
+	public static function get_file_storage_base()
+	{
+		return DOCROOT . static::$FILE_STORAGE_PATH;
+	}
+	
+	
+	/**
+	 * Return full path to the file on the server filesystem
+	 * @return NULL|string
+	 */
+	public function get_file_path()
+	{
+		$uid = $this->{static::$file_uid_field_name};
+		if (!$uid) return null;
+		return $this->file_storage() . $uid;
+	}
+	
+}

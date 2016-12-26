@@ -1,0 +1,393 @@
+2.2.4.0 2011-08-30
+[FE] Integrated last changes from AVO library in the Oslo Records project
+
+2.2.3.0 2011-08-29
+[FE] HTML::skype() and HTML::tel() added
+
+2.2.2.1 2011-08-25
+[BF] HTML::video() fixed
+
+2.2.2.0 2011-08-22
+[FE] HTML::video() added
+
+2.2.1.0 2011-08-22
+[FE] gc_datetime variable now automatically inserted
+[BF] AVO_Lock filesystems lock name now fixed
+
+2.2.0.3 2011-08-19
+[FE] All .php files prefixed with SYSPATH variable check to prevent direct script access
+
+2.2.0.2 2011-08-02
+[BF] database source class AVO_Data_Source_DB, function move() fix
+
+2.2.0.1 2011-07-28
+[BF] more fixes in AVO module for Kohana 3.2.0
+
+2.2.0.0 2011-07-26
+[BF] AVO module fixed for Kohana 3.2.0
+
+2.1.25.1 2011-03-14
+[FE] AVO_Image_Resize now preserve PNG alpha channel (transparency)
+
+2.1.25 2010-12-20
+[BF] AVO_Data_Grid parameter pass bug fixed for TYPE_BOOL
+
+2.1.24 2010-12-15
+[BF] AVO_Data_Form and AVO_Link multiply fields linking bug is fixed
+
+2.1.23 2010-11-09
+[FE] AVO_Image_Resize functions now accept additional parameter - JPEG quality, 90 by default
+
+2.1.22 2010-11-01
+[BF] AVO_Data_Form message 3rd parameter (bool - is message encoded or not) processed correctly now
+
+2.1.21 2010-05-06
+[BF] AVO_Data_Form render placeholder is selected correctly
+
+2.1.20 2010-04-29
+[FE] str::ifnull helper function is added that checks if the value is null and returns it if not or a second argument if null 
+
+2.1.19 2010-04-28
+[BF] All widgets receiveing parameters now correctly process the null value for parameter 
+
+2.1.18 2010-04-23
+[FE] AVO_Field now supports 'align' attribute 
+
+2.1.17 2010-04-22
+[FE] new validator: AVO_Validator_Googlekey to validate Google API keys
+
+2.1.16 2010-04-20
+[FE] new validators: AVO_Validator_Phone_No and AVO_Validator_Phone_No_Mobile for Norwegian general and mobile phone numbers respectively
+
+2.1.15 2010-04-19
+[BF] AVO_Media_Browser javascript properties are quoted
+
+2.1.14 2010-04-16
+[FE] added logging for invalid properties in the AVO_Parametrized_Class
+[BF] in all validators the $field->is_valid was removed
+
+2.1.13 2010-04-15
+[FE] added ul/ol/li to the valid elements of rich editor by default (avo.js)
+
+2.1.12 2010-04-15
+[FE] added after_delete_confirmed() to the grid (avo.js)
+
+2.1.11 2010-04-14
+[BF] .index() fixed, replaced with .inArray() (avo.js)
+
+2.1.10 2010-04-14
+[FE] added after_render property to the AVO_Field (avo.js)
+
+2.1.9 2010-04-14
+[FE] update to new jQuery/jQuery UI library
+[BF] fixed bugs surfaced with upgrade
+
+2.1.8 2010-04-13
+[FE] AVO_Data_Form incorrectly displayed the error for fields having a title as an AVO_Label object
+
+2.1.7 2010-03-23
+[FE] AVO_Label.hint parameter is added allowing displaying the hint message in a pop-up box
+[BF] AVO_Label rendering is wokring correctly now
+[BF] AVO_Data_Form correctly sets the id for the newly added record so it can be used in the after_save event handler
+
+2.1.6 2010-03-22
+[FE] lock helper supports mysql locks now by calling the db_aquire and db_release static methods
+
+2.1.5 2010-03-13
+[BF] AVO_Field lookup null result processing in js is fixed
+
+2.1.4 2010-03-12
+[BF] AVO_Field lookup_use_result property usage is fixed
+
+2.1.3 2010-03-03
+[BF] flexigrid displays correct icons in the info box
+
+2.1.2 2010-03-02
+[FE] 2dices and prize 32x32 icons are added
+
+2.1.1 2010-03-02
+[FE] new helper method is added str::cdata, returning the <![CDATA[...]]> string, ready for insertion into the XML
+[FE] new helper method is added str::fix_cdata, converting the character sequence ]]> in a string for instertion into the XML
+ 
+2.1.0 2010-02-21
+[FE] added new classes AVO_Forecast_Google and AVO_Forecast_Yahoo for retriving the weather forecast from the corresponding web services 
+
+2.0.21 2010-02-21
+[FE] added a javascript function $.preload_images() for preliminary loading of images with the call-back call 
+
+2.0.20 2010-02-02
+[FE] the internal state of the action handler is completely incapsuleted into the $action_state variable (AVO_Data_Form_Action_Result). Also the class AVO_Data_Form_Action_Result suppots a new property $action containing the name of the action call
+
+2.0.19 2010-01-30
+[FE] form paramters are passed to the linked widgets by default via the AVO_Link. So the linked object to receive them has to had them described as accepted parameters othervise they are ignored
+
+2.0.18 2010-01-27
+[FE] AVO_Data_Form supports a new property 'new_record_flag'   
+
+2.0.17 2010-01-21
+[BF] flexigrid bug fix that caused some errors under IE. AVO_TabbedLayout - clearing div is added after every tab page layout.   
+
+2.0.16 2010-01-19
+[BF] AVO_Field of type TEXT the HTML editor option document_base_url: AVO_Registry.settings.base_path is set to convert the urls correctly  
+
+2.0.15 2010-01-14
+[FE] Added __default_sortable property to the AVO_Field
+
+2.0.14 2010-01-14
+[BF] AVO_Validator_Date fixed: '00:00:00' time part removed from the validated string.
+
+2.0.13 2010-01-05
+[FE] AVO_Data_Grid supports top_buttons fields available via the class_extension
+
+2.0.12 2010-01-05
+[FE] AVO_Validator_Money added, validates '[+-]\d*[\.\d{0,2}]' as valid money string
+[FE] AVO_Field::TYPE_MONEYINT added, stores money as integer number of cents, renders it as fixed point numeral [+-][0-9]+.[0-9][0-9] or "overflow"
+
+2.0.11 2010-01-03
+[FE] AVO_Validator_Time added
+
+2.0.10 2010-01-03
+[BF] AVO_Data_Form uses now a correct method to reset the AVO_Links
+
+2.0.9 2009-12-09
+[FE] AVO_TabbedLayout, AVO_GridLayout and AVO_HorizontalLayout have the id property allowing to address them directly from the javascript
+[FE] public static function resize_image_match_width_max_height is added to AVO_Image_Resize
+[FE] AVO_Media_Browser class supports the on_delete event handler
+
+2.0.8 2009-11-19
+[FE] AVO_TabbedLayout layout manager is implemented
+
+2.0.7 2009-11-08
+[BF] DATE field is now processed correctly
+[FE] Date and Phonenum validators are implemented
+
+2.0.6 2009-11-06
+[FE] A bool field is rendered as a checkbox in the the AVO_Data_Grid widget
+
+2.0.5 2009-10-07
+[FE] Correct processing for DATETIME and DATE fields is implemented
+
+2.0.4 2009-09-23
+[BF] Lookup fields support bugs are fixed
+
+2.0.3 2009-07-21
+[FE] Lookup fields support is added
+
+2.0.2 2009-07-20
+[FE] Default values for the AVO_DB_Data_Source move parameter are added
+[BF] Correct function prototype is defined for the AVO_Data_Grid on_calc event handler
+
+2.0.1 2009-07-20
+AVO_Data_Form_Action_Result supports the 'perform_action' property for sending the client a command to navigae from the current page
+
+2.0.0 2009-06-29
+New version development based on the Kohana framework is started
+
+1.3.6 2009-04-24
+[FE] avoSetValidator class is added. It allows to check if the provided value is in a specified set of the values
+[FE] avoImageResize class support gif and png images along with jpg. Result is saved in a corresponding format.
+
+1.3.5 2009-04-05
+[FE] avoSQLDatabase supports now a new function getarray that returns an array as a result of provided sql query
+
+1.3.4 2009-04-04
+[FE] fields validators property can now contain a single validator reference instead of array
+
+1.3.3 2009-03-17
+[FE] new avoURLValidator class is added
+
+1.3.2 2009-03-04
+[BF] avoEmail Mime message creation is fixed
+
+1.3.1 2009-02-20
+[BF] avoCore::cookie method is fixed
+
+1.3 2009-01-19
+A new release with a lot of bugfixes and improvements
+
+1.2.44 2008-12-24
+[BF] avoDataForm title calculation procedure bug is fixed now
+
+1.2.42 2008-12-23
+[FE] avoBaseApplication now supports MB_CASE convertion parameter for all msg/encoding functions
+
+1.2.41 2008-12-11
+[BF] avoDBDataSet bug in go_to_page method is fixed
+
+1.2.40 2008-12-08
+[FE] avoBaseApplication now supports the following methods js, ejs, msgjs and emsgjs that take care of javascript string encoding
+
+1.2.39 2008-12-06
+[FE] avoEmailValidator now supports the multiply_addresses property along with the is_multiply_valid static method that allows a string of comma/semicolon/space separated emails
+[FE] avoEmail can send HTML UTF-8 emails using the sendHTML() method
+
+1.2.38 2008-12-04
+[FE] avoDataGrid now supports the show_pager_prev_next_buttons property for the pager that is false by default
+
+1.2.37 2008-12-03
+[FE] avoImageResize class resize_image_fit_height method is added
+
+1.2.36 2008-12-01
+[FE] avoDatabase insert method returns an LAST_INSERT_ID() value or null if insertion has been failed, update method returns number of rows affected
+
+1.2.35 2008-11-21
+[BF] avoImageResize static method resize_image_fit dimentions comparison algorithm works correctly no
+
+1.2.34 2008-11-19
+[BF] avoImageResize methods is_smaller and is_larger return now correct results
+
+1.2.33 2008-11-15
+[FE] avoEmailValidator supports a static is_valid function for external checks
+
+1.2.32	2008-10-30
+[FE] avoDataGrid supports use_pager property that enables (by default) a pager mechanism for data
+
+1.2.31	2008-10-29
+[BF] in avoButton text never wraps now
+
+1.2.30	2008-10-28
+[BF] avoImagesBrowser file upload works for IE7 fine
+
+1.2.29	2008-10-24
+[BF] javscript button control now draws the borders correctly
+[BF] avoRangeDataSource forces casting of the from and to values to the integer type now
+[BF] avoControlSet correctly processes the next validator when the lookup value check fails to find the passed value
+
+1.2.28	2008-10-08
+[BF] forced 0755 permissions is set for the avoImageBrowser original image path. mkdir does not set the required permissions
+[BF] avoDBDataSet bof and eof calculation is fixed during the go_to_page() navigation
+
+1.2.27	2008-09-28
+[FE] avoDatabase supports insert method for inserting the records
+[FE] avoDataForm supports filter property for post-POST data filters
+
+1.2.26	2008-09-17
+[FE] avoDataGrid supports bottom and top pagers now. Fields show_pager_on_top and show_pager_on_bottom control this behavior
+
+1.2.25	2008-09-13
+[BF] avoField render method for dataform created DIV using invalid call
+
+1.2.24	2008-09-10
+[BF] forced 0644 permissions is set for the avoImageBrowser original image
+
+1.2.23	2008-09-08
+a bug fixed. Previously removed check for disabled magic quotes is returned back
+
+1.2.22	2008-09-03
+avoDataGrid now implements the 'hidden' property of the avoField
+
+1.2.21	2008-09-01
+added a support for 'hide_field_name' boolean property for a validator
+
+1.2.20	2008-08-21
+a bug fixed in jpg image determining
+
+1.2.19	2008-08-18
+do_scroll property is added to the avoDataForm
+
+1.2.18	2008-08-15
+bug fixed in parameters fetching code for avoImagesBrowser and avoDataGrid classes
+
+1.2.17	2008-08-13
+avoCore::get_include_contents() is now supports an optional parameter $page to render some page contents using its context
+
+1.2.16	2008-08-08
+avoDataGrid can have a custom row rendering
+
+1.2.15	2008-07-24
+Cleanup and code optimization
+
+1.2.14	2008-07-23
+garbage collection feature is removed from the avoWebPage. Different mechanism should be developed
+
+1.2.13	2008-07-20
+append method is added to the avoField class
+
+1.2.12	2008-06-23
+_created, _modified, _modify_count sql query fields must be always present and managed by user
+
+1.2.11	2008-06-22
+a bug in processing the parameters in linked form is fixed
+
+1.2.10	2008-06-21
+* after_delete handler for avoDataGrid is only executed if at least one  record has been removed from the table
+* after_save handler for avoDataForm is only executed if a record has been physically added or edited
+
+1.2.9	2008-06-20
+default sortering in the datasets bug is fixed
+
+1.2.8	2008-06-19
+garbage collection feature is added to the avoWebPage
+
+1.2.7	2008-06-18
+avoAlwaysFailValidator class is added. It implements a validator that always fail
+
+1.2.6	2008-04-23
+* avoOrderingControl class now has a static method standard_control() for creating a standard ordering control
+* avoWebPage was added with init_upload_variable() function to initialize the file upload session id for page
+* avoWebPage was added with get_mime_ico_path() function that calculates a mime ico path for provided file extension
+
+1.2.5	2008-04-22
+avoImageResize class for basic image manipulation is created
+
+1.2.4	2008-04-21
+avoTabbedLayout does not save the last open page now in cookies
+
+1.2.3	2008-04-17
+avoButton class supports the custom buttons with icons
+
+1.2.2	2008-04-09
+avoPassswordMatchValidator() class is added
+
+1.2.1	2008-03-27
+a bug in the avoLayoutControl->delete method is fixed.
+
+1.2.0	2008-03-13
+The framework was completely reorganized. Template engine was removed. Direct php includes work much faster and easier to debug and maintain
+
+1.1.0	2008-02-07
+* avoSQLDBDataSource::simple_dataset now accepts a 'condition' property to narrow the selects and updates
+* avoDataGrid now handles the process_action event for custom events processing
+
+1.0.11	2008-02-06
+* properties 'param_handler' and 'move_params' can be provided to the avoSQLDBDataSource::simple_dataset factory function now
+* support for the child forms for avoDataGrid is added (property child_forms)
+
+1.0.10	2008-02-01
+* a bug in the avoSQLDBDataSource::simple_dataset factory function was fixed. It prevented it from the correct using in the lookup fields
+
+1.0.9	2008-01-31
+* avoDataGrid class now uses the server_side_only property of the avoField
+* resize_image was added to the avoFunc js class
+
+1.0.8	2008-01-28
+* avoXMLParser class was added
+
+1.0.7	2008-01-08
+* avoField of type TEXT now supports an HTML editor. Tiny MCE and FCKEditor are supported
+
+1.0.6	2008-01-04
+* avoSettings moved from a framework to application and renamed to Settings
+* 'print' function calls were replaced with optimized echo with no string concantenation
+* string concantenations in 'echo' cunstruct calls were replaced with parametrical calls to 'echo'
+
+1.0.5	2007-11-02
+* bug was fixed in avoEmail. when no From field is set it is ignorred now
+
+1.0.4	2007-10-24
+* simple_dataset static function is added to avoSQLDBDataSource to quickly create standard
+  table access datasets
+* fixed a year format in avoStringUtil::sqldatetime2str
+
+1.0.3	2007-10-24
+* avoApplication class was was removed into Application and moved to the application folder
+  as it should be modified by developer to match his needs
+* avoDataGrid class handles an after_delete event
+* avoDataForm class handles an after_save event
+
+1.0.2	2007-10-24
+* 'hidden' property was added to the avoField to support the hidden record-related data
+  transfers between client and server
+
+1.0.1	2007-10-24
+* Version tracking is started

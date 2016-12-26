@@ -1,0 +1,240 @@
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @color: rgba(0, 0, 0, .1)) {
+  -webkit-box-shadow: @x-axis @y-axis @blur @color;
+  -moz-box-shadow: @x-axis @y-axis @blur @color;
+  box-shadow: @x-axis @y-axis @blur @color;
+}
+.text-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @color: rgba(0, 0, 0, .1)) {
+  -webkit-text-shadow: @x-axis @y-axis @blur @color;
+  -moz-text-shadow: @x-axis @y-axis @blur @color;
+  text-shadow: @x-axis @y-axis @blur @color;
+}
+.transition(@property: all, @time: 0.3s, @type: ease, @delay: 0s) {
+	-webkit-transition: @property @time @type @delay;  // Safari 3.2+, Chrome
+	-moz-transition: @property @time @type @delay;  // Firefox 4-15
+	-o-transition: @property @time @type @delay;  // Opera 10.5–12.00
+	transition: @property @time @type @delay;  // Firefox 16+, Opera 12.50+
+}
+.transition_plus(@property: all, @time: 0.3s, @type: ease, @delay: 0s) {
+	-webkit-transition+: @property @time @type @delay;  // Safari 3.2+, Chrome
+	-moz-transition+: @property @time @type @delay;  // Firefox 4-15
+	-o-transition+: @property @time @type @delay;  // Opera 10.5–12.00
+	transition+: @property @time @type @delay;  // Firefox 16+, Opera 12.50+
+}
+.transition_transform(@time: 0.3s, @type: ease, @delay: 0s) {
+	-webkit-transition: -webkit-transform @time @type @delay;  // Safari 3.2+, Chrome
+	-moz-transition: -moz-transform @time @type @delay;  // Firefox 4-15
+	-o-transition: -o-transform @time @type @delay;  // Opera 10.5–12.00
+	-ms-transition: -mstransform @time @type @delay;  // Opera 10.5–12.00
+	transition: transform @time @type @delay;  // Firefox 16+, Opera 12.50+
+}
+.transition_transform_plus(@time: 0.3s, @type: ease, @delay: 0s) {
+	-webkit-transition+: -webkit-transform @time @type @delay;  // Safari 3.2+, Chrome
+	-moz-transition+: -moz-transform @time @type @delay;  // Firefox 4-15
+	-o-transition+: -o-transform @time @type @delay;  // Opera 10.5–12.00
+	-ms-transition+: -mstransform @time @type @delay;  // Opera 10.5–12.00
+	transition+: transform @time @type @delay;  // Firefox 16+, Opera 12.50+
+}
+.border-radius(@radius) {
+	-webkit-border-radius: @radius; // Android ≤ 1.6, iOS 1-3.2, Safari 3-4
+			border-radius: @radius; // Android 2.1+, Chrome, Firefox 4+, IE 9+, iOS 4+, Opera 10.50+, Safari 5+
+	// prevent bg color from leaking outside the border:
+	-webkit-background-clip: padding-box;
+			background-clip: padding-box;
+}
+
+.user-select(@argument: none) {
+	-webkit-touch-callout: @argument;
+	-webkit-user-select: @argument;
+	-moz-user-select: @argument;
+	-ms-user-select: @argument;
+	user-select: @argument;
+}
+
+.opacity(@opacity: 0) {
+	@opacity_percent:@opacity * 100;
+	opacity: @opacity;
+	.lt-ie9 & {
+		filter: alpha(opacity=@opacity_percent);
+	}
+}
+
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+	background: @color;
+	background: -webkit-gradient(linear,
+					left bottom,
+					left top,
+					color-stop(0, @start),
+					color-stop(1, @stop));
+	background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+	background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+	background: -o-linear-gradient(@stop,
+                                 @start);
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+}
+
+
+.transform(...) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-o-transform: @arguments;
+	-ms-transform: @arguments;
+	transform: @arguments;
+}
+.transform-origin(...) {
+	-webkit-transform-origin: @arguments;
+	-moz-transform-origin: @arguments;
+	-o-transform-origin: @arguments;
+	-ms-transform-origin: @arguments;
+	transform-origin: @arguments;
+}
+.transform-origin-x(...) {
+	-webkit-transform-origin-x: @arguments;
+	-moz-transform-origin-x: @arguments;
+	-o-transform-origin-x: @arguments;
+	-ms-transform-origin-x: @arguments;
+	transform-origin-x: @arguments;
+}
+
+.rotation(@deg:5deg){
+	.transform(rotate(@deg));
+}
+
+
+
+.invisible (@time: .3s, @easing: ease-out) {
+	visibility: hidden;
+	.opacity(0);
+	-moz-transition: visibility 0s @time @easing, opacity @time @easing;
+	-webkit-transition: visibility 0s @time @easing, opacity @time @easing;
+	transition: visibility 0s @time @easing, opacity @time @easing;
+}
+.visible (@opacity: 1,@time: .3s, @easing: ease-out) {
+	.transition(opacity, @time, @easing);
+	.opacity(@opacity);
+	visibility: visible;
+}
+
+
+.elipsis_overflow() {
+	overflow:hidden;
+	white-space: nowrap; 
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis; 	
+}
+
+.prevent_selection() {
+	.user-select(none);
+}
+
+.bg_rgba(@colour, @alpha) { // do not put the opacity over it in IE
+    @alphaColour: hsla(hue(@colour), saturation(@colour), lightness(@colour), @alpha);
+     
+    background-color: @colour; // Fallback for older browsers
+    background-color: @alphaColour;
+}
+
+.box-sizing(@type: border-box) {
+	-moz-box-sizing: @type;
+	-webkit-box-sizing: @type;
+	box-sizing: @type;
+}
+
+.clearfix() {
+	&:before, &:after {
+		display: table;
+		content: "";
+		line-height: 0;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+
+.background-clip(@argument: padding-box) {
+	-moz-background-clip: @argument;
+	-webkit-background-clip: @argument;
+	background-clip: @argument;
+}
+.rounded(@radius: 2px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	.background-clip();
+}
+
+.columns(@count, @gap, @fill:balance) {
+	-webkit-column-count: @count;
+	-webkit-column-gap: @gap; /* Chrome, Safari 3 */ 
+	-webkit-column-fill:@fill; 	
+	-moz-column-count: @count;
+	-moz-column-gap: @gap; /* Firefox 3.5+ */ 
+	-moz-column-fill:@fill; 	
+	column-count: @count;
+	column-gap: @gap; /* Opera 11+ */
+	column-fill:@fill; 	
+}
+
+.midcenteralign() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	.transform(translate(-50%, -50%));
+}
+.midbottomalign(@bottom_offset:0) {
+	position: absolute;
+	bottom: @bottom_offset;
+	left: 50%;
+	.transform(translate(-50%, 0));
+}
+
+
+// `Clear Floated Elements
+// http://sonspring.com/journal/clearing-floats
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+// http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified
+.clearfix {
+	&:before, &:after {
+	  content: '\0020';
+	  display: block;
+	  overflow: hidden;
+	  visibility: hidden;
+	  width: 0;
+	  height: 0;
+	}
+	
+	&:after {
+	  clear: both;
+	}
+}
+
+
+.hyphenate {
+	-ms-word-break: normal;
+	word-break: normal;
+	word-break: break-word; // Non standard for webkit
+
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
+.no_anchor_style {
+	text-decoration:none;
+	&:hover {
+		text-decoration:none;
+	}
+}

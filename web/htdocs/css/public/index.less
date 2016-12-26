@@ -1,0 +1,243 @@
+@import (reference) "_common.less";
+@import (reference) "mixins.less";
+
+.front-layer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 3;
+	.transition(transform, .05s, linear);
+	img {
+		position: absolute;
+	}
+	.track-white {
+		width: 19.53%;
+		left: 1.5%;
+		top: 0;
+		margin-top: 3.3%;
+	}
+	.rectangle-blue {
+		width: 8.28%;
+		left: 30%;
+		top: 0;
+		margin-top: -1.4%;
+	}
+	.black-map {
+		width: 19%;
+		right: 20%;
+		top: 0;
+		margin-top: -5%;
+	}
+	.sharp-triangle {
+		width: 17.42%;
+		right: 6.64%;
+		top: 0;
+		margin-top: 1.5%;
+	}
+	.plus-black {
+		width: 2.34%;
+		right: 14.53%;
+		top: 0;
+		margin-top: 22%;
+	}
+	.race-track-blue {
+		width: 17.73%;
+		right: -5.16%;
+		bottom: 0;
+		margin-bottom: 17%;
+	}
+	.black-blob {
+		width: 20.31%;
+		right: -3.125%;
+		bottom: 0;
+		margin-bottom: -4%;
+	}
+	.luck-bone {
+		width: 21.25%;
+		right: 2.58%;
+		bottom: 0;
+		margin-bottom: 3%;
+	}
+	.circle {
+		width: 10.15%;
+		right: 31%;
+		bottom: 0;
+		margin-bottom: -3.5%;
+	}
+	.dotted-o-blue {
+		width: 24%;
+		left: 26.39%;
+		bottom: 0;
+		margin-bottom: -10%;
+	}
+	.rectangle-black {
+		width: 5%;
+		left: 20.53%;
+		bottom: 0;
+		margin-bottom: 5%;
+	}
+	.plus-blue {
+		width: 18.44%;
+		left: 4.219%;
+		bottom: 0;
+		margin-bottom: 7%;
+	}
+}
+.back-layer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+	.transition(transform, .05s, linear);
+	img {
+		position: absolute;
+	}
+	.big-building {
+		width: 27%;
+		left: -6%;
+		top: 0;
+		margin-top: -4%;
+	}
+	.blue-n {
+		width: 12%;
+		left: 12%;
+		top: 0;
+		margin-top: -3%;
+	}
+	.black-blob-small {
+		width: 2.66%;
+		left: 28%;
+		top: 0;
+		margin-top: 11.5%;
+	}
+	.dotted-02 {
+		width: 27%;
+		left: 42%;
+		top: 0;
+		margin-top: -15%;
+	}
+	.tiny-n {
+		width: 4%;
+		right: 26%;
+		top: 0;
+		margin-top: 3%;
+	}
+	.textured-u {
+		width: 16%;
+		right: 8%;
+		top: 0;
+		margin-top: -6%;
+	}
+	.pill {
+		width: 28%;
+		right: -12%;
+		top: 0;
+		margin-top: 6%;
+	}
+	.black-n {
+		width: 17%;
+		right: -1.5%;
+		top: 0;
+		margin-top: -1%;
+	}
+	.dotted-o {
+		width: 19.9%;
+		right: -7%;
+		bottom: 0;
+		margin-bottom: 12%;
+	}
+	.blob-opacity {
+		width: 13.28%;
+		right: 10%;
+		bottom: 0;
+		margin-bottom: 7%;
+	}
+	.blue-map {
+		width: 19.6%;
+		right: 17%;
+		bottom: 0;
+		margin-bottom: -7%;
+	}
+	.blob-white {
+		width: 17.5%;
+		left: 17%;
+		bottom: 0;
+		margin-bottom: -6%;
+	}
+	.black-u {
+		width: 19.5%;
+		left: -4%;
+		bottom: 0;
+		margin-bottom: -8%;
+	}
+	.textured-n {
+		width: 42.67%;
+		left: -11%;
+		bottom: 0;
+		margin-bottom: -1%;
+	}
+	.track-lined {
+		width: 40.9%;
+		left: -11%;
+		bottom: 0;
+		margin-bottom: -14%;
+	}
+}
+#index {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 4;
+	.table {
+		.transition(transform, .05s, linear);
+		.img {
+			width: 100%;
+			margin: 0 auto;
+			+ .img {
+				margin-top: 2%;
+			}
+		}
+	}
+}
+
+#index_logo {
+	width: 33.333333332%;
+	margin: 0 auto;
+	position: relative;
+	.hover-logo,
+	.hover-under-logo {
+		.transition(opacity);
+		opacity: 0;
+		margin: 0 !important;
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+	.hover-logo {
+		top: 0;
+	}
+	.hover-under-logo {
+		bottom: 0;
+	}
+	// .no-touchevents &:hover {
+	// 	.hover-logo,
+	// 	.hover-under-logo {
+	// 		opacity: 1;
+	// 	}
+	// }
+	svg {
+		.transition(fill);
+	}
+	.no-touchevents &:hover {
+		svg {
+			// fill: #202e56;
+			fill: @blue;
+		}
+	}
+}

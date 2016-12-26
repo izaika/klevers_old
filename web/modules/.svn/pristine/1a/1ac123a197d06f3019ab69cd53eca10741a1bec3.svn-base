@@ -1,0 +1,4 @@
+1. Add a support of radio buttons in Data forms
+2. Remove js boxing for the forms. Style them with CSS3
+3. render the objects using the json notation only
+4. adjust the grid and form to use the Kohana methods for accessing the POST

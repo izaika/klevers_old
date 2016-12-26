@@ -1,0 +1,65 @@
+// =================================================================
+// 	Variable Grid System.
+// 	Based on 960 Grid System - http://960.gs/
+// =================================================================
+
+@import (reference) "mixins.less";
+
+.grid960(@width, @margin, @count, @suffix: ~"") {
+	@full_margin: 2 * @margin;
+	@container_width: @count * (@width + @full_margin);
+
+	// Containers
+	.container@{suffix}_@{count} {
+		.clearfix();
+		margin-left: auto;
+		margin-right: auto;
+		width: @container_width;
+	}
+	
+	// grid cells
+	.generate_grid_item(@count);
+	.generate_grid_item(@number) when (@number > 0) {
+		.push@{suffix}_@{number}, pull@{suffix}_@{number}, .grid@{suffix}_@{number} {
+			position: relative;
+		}
+		.grid@{suffix}_@{number} {
+			display:inline-block;
+			float: left;
+			margin-left: @margin;
+			margin-right: @margin;
+			width:(@width + @full_margin) * @number - @full_margin; 
+		}
+		// Prefix Extra Space
+		.prefix@{suffix}_@{number} when (@number < @count) {
+			padding-left:(@width + @full_margin) * @number;
+		}
+		// Suffix Extra Space
+		.suffix@{suffix}_@{number} when (@number < @count) {
+			padding-right:(@width + @full_margin) * @number;
+		}
+		// Push space
+		.push@{suffix}_@{number} when (@number < @count) {
+			left:(@width + @full_margin) * @number;
+		}
+		// Pull space
+		.pull@{suffix}_@{number} when (@number < @count) {
+			left:-(@width + @full_margin) * @number;
+		}
+		
+		.generate_grid_item(@number - 1);
+	}
+		
+
+	// Grid >> Children (Alpha ~ First, Omega ~ Last)
+	.alpha@{suffix} {
+		margin-left: 0;
+	}
+	.omega@{suffix} {
+		margin-right: 0;
+	}
+}
+
+
+
+
