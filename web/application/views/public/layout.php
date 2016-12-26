@@ -108,7 +108,9 @@ switch ($device) {
 </head>
 <body<?= HTML::attributes($body_attributes) ?> onunload="">
 <div id="container">
+<?= View::factory('public/_header') ?>
 <?= $content ?>
+<?= View::factory('public/_footer') ?>
 </div>
 </body>
 </html>
