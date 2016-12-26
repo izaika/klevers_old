@@ -1,5 +1,5 @@
-/web/application/assets/*
-/web/application/cache/*
-/web/application/logs/*
-/web/htdocs/assets/tmp/*
-/db/dump.bak
+#/web/application/assets/*
+#/web/application/cache/*
+#/web/application/logs/*
+#/web/htdocs/assets/tmp/*
+#/db/dump.bak
