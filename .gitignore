@@ -1,0 +1,4 @@
+/web/application/assets/
+/web/application/logs/
+/web/htdocs/assets/tmp/
+/db/dump.bak
