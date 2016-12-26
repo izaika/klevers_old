@@ -65,6 +65,9 @@ switch ($device) {
 	<meta<?= HTML::attributes(['property' => 'fb:app_id', 'content' => $fb_app_id]) ?>>
 <?php
 	}
+?>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<?php
 	// add page styles
 	foreach ($styles as $item) {
 		if (is_array($item))

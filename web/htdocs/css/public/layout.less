@@ -8,8 +8,9 @@ body {
 	position: relative;
 	line-height: 1.25;
 	min-height: 100vh;
+	background-color: @beige;
 	color: @black;
-	padding-top: 150px;
+	font-family: 'Open Sans', sans-serif;
 	* {
 		-moz-osx-font-smoothing: grayscale;
 		-webkit-font-smoothing: antialiased;
@@ -23,6 +24,31 @@ body {
 		-moz-box-sizing: content-box;
 		-webkit-box-sizing: content-box;
 		box-sizing: content-box;
+	}
+}
+
+#container {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	padding-top: 150px;
+}
+
+header,
+footer {
+	flex: none;
+}
+
+main {
+	flex: 1 0 auto;
+	padding: var(--space) var(--space) 0;
+	width: 100%;
+	&:after {
+		content: '\00a0'; /* &nbsp; */
+		display: block;
+		margin-top: var(--space);
+		height: 0px;
+		visibility: hidden;
 	}
 }
 

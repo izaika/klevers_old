@@ -8,8 +8,8 @@ class Task_Fix_Permissions extends Minion_Task {
 
 	protected function _execute(array $params)
 	{
-		$owner = (PHP_OS == 'Darwin') ? 'www' : 'www-data';
-		$group = (PHP_OS == 'Darwin') ? 'www' : 'www-data';
+		$owner = (PHP_OS == 'Darwin') ? '_www' : 'www-data';
+		$group = (PHP_OS == 'Darwin') ? '_www' : 'www-data';
 		$dirs = array(APPPATH.'cache', APPPATH.'logs', APPPATH.'assets', DOCROOT.'assets');
 
 		foreach ($dirs as $dir)
