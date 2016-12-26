@@ -1,27 +1,16 @@
 <?php
-// echo $_SERVER['HTTP_USER_AGENT']; die;
-
 	$html_class = 'no-js';
 	$body_class = '';
-	if (isset($no_footer) && $no_footer) {
-		$body_class .= 'no-footer';
-	}
-	if (isset($is_search) && $is_search) {
-		$html_class .= ' search-page';
-	}
-	if (isset($blue_bg) && $blue_bg) {
-		$html_class .= ' blue-bg';
-	}
 	$body_attributes = [
 		'data-base-url'	=> URL::site('/'),
 		'class'			=> $body_class
 	];
-	$blue_bg = isset($blue_bg) && $blue_bg;
 ?><!DOCTYPE html>
 <html<?= HTML::attributes(['class' => $html_class, 'lang' => 'no']) ?>>
 <head>
 	<meta charset="utf-8">
 <?php
+/*
 switch ($device) {
 	case 'mobile':
 		?><meta name="viewport" content="width=640" /><?php
@@ -33,25 +22,8 @@ switch ($device) {
 		?><meta name="viewport" content="width=device-width, initial-scale=1"><?php
 		break;
 }
+*/
 ?>
-
-	<link rel="apple-touch-icon" sizes="57x57" href="<?= URL::site('apple-icon-57x57.png') ?>">
-	<link rel="apple-touch-icon" sizes="60x60" href="<?= URL::site('apple-icon-60x60.png') ?>">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?= URL::site('apple-icon-72x72.png') ?>">
-	<link rel="apple-touch-icon" sizes="76x76" href="<?= URL::site('apple-icon-76x76.png') ?>">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?= URL::site('apple-icon-114x114.png') ?>">
-	<link rel="apple-touch-icon" sizes="120x120" href="<?= URL::site('apple-icon-120x120.png') ?>">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?= URL::site('apple-icon-144x144.png') ?>">
-	<link rel="apple-touch-icon" sizes="152x152" href="<?= URL::site('apple-icon-152x152.png') ?>">
-	<link rel="apple-touch-icon" sizes="180x180" href="<?= URL::site('apple-icon-180x180.png') ?>">
-	<link rel="icon" type="image/png" sizes="192x192"  href="<?= URL::site('android-icon-192x192.png') ?>">
-	<link rel="icon" type="image/png" sizes="32x32" href="<?= URL::site('favicon-32x32.png') ?>">
-	<link rel="icon" type="image/png" sizes="96x96" href="<?= URL::site('favicon-96x96.png') ?>">
-	<link rel="icon" type="image/png" sizes="16x16" href="<?= URL::site('favicon-16x16.png') ?>">
-	<link rel="manifest" href="manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="<?= URL::site('ms-icon-144x144.png') ?>">
-	<meta name="theme-color" content="#ffffff">
 
 	<title><?= HTML::chars($seo_title) ?></title>
 	<meta<?= HTML::attributes(['name' => 'description', 'content' => HTML::chars($seo_description)]) ?>>
@@ -136,17 +108,7 @@ switch ($device) {
 </head>
 <body<?= HTML::attributes($body_attributes) ?> onunload="">
 <div id="container">
-<?= View::factory('public/_grid') ?>
 <?= $content ?>
-<?= View::factory('public/_busy_overlay') ?>
 </div>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-5595467-1");
-pageTracker._trackPageview();
-</script>
 </body>
 </html>
