@@ -4,9 +4,9 @@ return [
 	'default' => [
 		'type'		=> 'PDO_MySQL',
 		'connection' => [
-			'dsn'		=> 'mysql:host=localhost;dbname=nuno;charset=utf8',
-			'username'	=> 'nuno',
-			'password'	=> 'I5iHzVYWAzsIdjEE',
+			'dsn'		=> 'mysql:host=localhost;dbname=klevers;charset=utf8',
+			'username'	=> 'klevers',
+			'password'	=> 'I5iHzVYWAzsIdjED',
 			'persistent'	=> false,
 		],
 		'table_prefix' => '',
