@@ -3,6 +3,7 @@
 abstract class Controller_Admin_Abstract_Authenticated extends Controller_Admin_Abstract {
 
 	const MENU_HOME			= 1;
+	const MENU_PRODUCTS		= 3;
 	// const MENU_PROJECTS		= 2;
 	// const MENU_ABOUT		= 3;
 	// const MENU_BLOG			= 4;
