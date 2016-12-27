@@ -26,14 +26,13 @@ class Controller_Abstract_Public extends AVO_Controller
 		$detect = new Mobiledetect;
 
 		if ($detect->isMobile() && strpos($detect->getUserAgent(), 'Mobile') !== false && strpos($detect->getUserAgent(), 'iPad') === false) {
-			$this->device = $this->module = 'mobile';
+			$this->device = 'mobile';
 		} elseif ($detect->isTablet()) {
 			$this->device = 'tablet';
-			$this->module = 'public';
 		} else {
 			$this->device = 'desktop';
-			$this->module = 'public';
 		}
+		$this->module = 'public';
 		// $this->device = $this->module = 'mobile';
 		View::set_global('device', $this->device);
 
@@ -47,23 +46,13 @@ class Controller_Abstract_Public extends AVO_Controller
 			$this->force_ajax_response();
 		} else {
 			if (is_object($this->template)) {
-				$google_maps_api_key = Model_Variable::value_by_name('google_maps_api_key', true);
 
 				if (Kohana::$environment == Kohana::DEVELOPMENT && $this->device != 'mobile') $this->add_js_script('js/'.$this->module.'/lib/modernizr.js');
 
 
 				$this->add_stylesheet('css/'.$this->module.'/app.' . self::RESOURCE_SERIAL . '.css');
 
-
-				$this->template->google_api_key = Model_Variable::value_by_name('ga_id', true);
 				$this->template->serial_number = self::RESOURCE_SERIAL;
-
-				View::set_global('facebook_url', Model_Variable::value_by_name('facebook_url', true));
-				View::set_global('instagram_url', Model_Variable::value_by_name('instagram_url', true));
-				View::set_global('linkedin_url', Model_Variable::value_by_name('linkedin_url', true));
-
-				View::set_global('phone', Model_Variable::value_by_name('contact_phone', true));
-				View::set_global('email', Model_Variable::value_by_name('contact_email', true));
 			}
 		}
 	}

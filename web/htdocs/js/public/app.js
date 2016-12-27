@@ -36,17 +36,6 @@ define('app', ['jquery'], function($) {
       result += '___xhr';
       return result;
     },
-    measureScrollbar: function() {
-      var $body, scrollDiv, scrollbarWidth;
-      $body = $('body');
-      scrollDiv = document.createElement('div');
-      scrollDiv.className = 'modal-scrollbar-measure';
-      $(scrollDiv).css('overflow', 'scroll');
-      $body.append(scrollDiv);
-      scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-      $body[0].removeChild(scrollDiv);
-      return scrollbarWidth;
-    },
     base_url: void 0,
     window: void 0,
     html: void 0,
@@ -69,182 +58,16 @@ define('app', ['jquery'], function($) {
       this.body = $('body');
       this.module = $('main');
       this.scrollable_element = $(window).scrollable_element();
-      this.menu_btn = $('#menu_btn');
-      this.menu_overlay = $('#menu_overlay');
-      this.to_top_link = $('#to_top');
-      this.document = $(document);
-      this.footer = $('footer');
-      this.facebook_link = $('#facebook_link');
-      this.instagram_link = $('#instagram_link');
-      this.linkedin_link = $('#linkedin_link');
-      this.pdf_link = $('#pdf_link');
-      this.menu_btn.on('click', (function(_this) {
-        return function(e) {
-          e.preventDefault();
-          if (_this.html.hasClass('menu-is-shown')) {
-            _this.html.removeClass('menu-is-shown');
-            return _this.menu_overlay.stop(true, true).fadeOut('300');
-          } else {
-            _this.html.addClass('menu-is-shown');
-            return _this.menu_overlay.stop(true, true).fadeIn('300');
-          }
-        };
-      })(this));
-      if (!Modernizr.touchevents) {
-        this.html.attr('data-scrollbar-width', app.measureScrollbar());
-      }
       $('.initially-hidden').removeClass("initially-hidden").hide();
-      this.initTransitionLinks();
       switch (this.module.attr('id')) {
         case 'index':
-          require(['cs!pages/index'], function(index) {
+          return require(['cs!pages/index'], function(index) {
             return index.init();
           });
-          break;
-        case 'home':
-          require(['cs!pages/home'], function(home) {
-            return home.init();
-          });
-          break;
-        case 'projects':
-          require(['cs!pages/projects'], function(projects) {
-            return projects.init();
-          });
-          break;
-        case 'project_article':
-          require(['cs!pages/project_article'], function(project_article) {
-            return project_article.init();
-          });
-          break;
-        case 'blog':
-          require(['cs!pages/blog'], function(blog) {
-            return blog.init();
-          });
-          break;
-        case 'about':
-          require(['cs!pages/about'], function(about) {
-            return about.init();
-          });
-          break;
-        case 'contact':
-          require(['cs!pages/contact'], function(contact) {
-            return contact.init();
-          });
-          break;
-        case 'search':
-          require(['cs!pages/search'], function(search) {
-            return search.init();
-          });
-          break;
         case 'exception404':
-          require(['cs!pages/exception404'], function(exception404) {
+          return require(['cs!pages/exception404'], function(exception404) {
             return exception404.init();
           });
-      }
-      if (this.to_top_link.length) {
-        this.to_top_link.on('click', (function(_this) {
-          return function(e) {
-            e.preventDefault();
-            return _this.scrollable_element.animate({
-              scrollTop: 0
-            }, 800);
-          };
-        })(this));
-      }
-      this.window.on('scroll', (function(_this) {
-        return function() {
-          var document_height, footer_height, margin_bottom, scroll_top, window_height;
-          window_height = _this.window.height();
-          footer_height = _this.footer.height();
-          scroll_top = _this.scrollable_element.scrollTop();
-          document_height = _this.document.height();
-          if (scroll_top > window_height * 0.2) {
-            _this.to_top_link.addClass('visible');
-          } else {
-            _this.to_top_link.removeClass('visible');
-          }
-          if (scroll_top >= document_height - window_height - footer_height) {
-            margin_bottom = footer_height - (document_height - (scroll_top + window_height));
-            if (_this.facebook_link.length) {
-              _this.facebook_link.css('margin-bottom', margin_bottom);
-            }
-            if (_this.instagram_link.length) {
-              _this.instagram_link.css('margin-bottom', margin_bottom);
-            }
-            if (_this.linkedin_link.length) {
-              _this.linkedin_link.css('margin-bottom', margin_bottom);
-            }
-            if (_this.pdf_link.length) {
-              _this.pdf_link.css('margin-bottom', margin_bottom);
-            }
-            if (_this.to_top_link.length) {
-              return _this.to_top_link.css('margin-bottom', margin_bottom);
-            }
-          } else {
-            if (_this.facebook_link.length) {
-              _this.facebook_link.removeAttr('style');
-            }
-            if (_this.instagram_link.length) {
-              _this.instagram_link.removeAttr('style');
-            }
-            if (_this.linkedin_link.length) {
-              _this.linkedin_link.removeAttr('style');
-            }
-            if (_this.pdf_link.length) {
-              _this.pdf_link.removeAttr('style');
-            }
-            if (_this.to_top_link.length) {
-              return _this.to_top_link.removeAttr('style');
-            }
-          }
-        };
-      })(this));
-      return this.window.trigger('scroll');
-    },
-    initTransitionLinks: function() {
-      if (Modernizr.touchevents) {
-        $('.touchlink').off('click').on('click', (function(_this) {
-          return function(e) {
-            var t;
-            e.preventDefault();
-            t = $(e.currentTarget);
-            if (t.hasClass('vhover')) {
-              return location.href = t.attr('href');
-            } else {
-              $('.touchlink').removeClass('vhover');
-              return t.addClass('vhover');
-            }
-          };
-        })(this));
-        return $('a.transition:not(.touchlink)').off('click').on('click', function(e) {
-          var busy_overlay, t;
-          e.preventDefault();
-          t = $(e.currentTarget);
-          busy_overlay = $('#busy_overlay');
-          if (t.hasClass('to-blog')) {
-            busy_overlay.addClass('blue');
-          } else if (app.html.hasClass('blue-bg')) {
-            busy_overlay.addClass('gray');
-          }
-          return busy_overlay.fadeIn(300, function() {
-            return window.location.href = t.attr('href');
-          });
-        });
-      } else {
-        return $('a.transition').off('click').on('click', function(e) {
-          var busy_overlay, t;
-          e.preventDefault();
-          t = $(e.currentTarget);
-          busy_overlay = $('#busy_overlay');
-          if (t.hasClass('to-blog')) {
-            busy_overlay.addClass('blue');
-          } else if (app.html.hasClass('blue-bg')) {
-            busy_overlay.addClass('gray');
-          }
-          return busy_overlay.fadeIn(300, function() {
-            return window.location.href = t.attr('href');
-          });
-        });
       }
     }
   };
