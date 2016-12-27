@@ -154,27 +154,13 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>(/<uid>(/<filename>)))))
 	'directory'		=> 'admin',		'controller'	=> 'Settings',
 	'action'		=> 'index',
 ]);
-
-Route::set('caticonfile', 'caticonfile/<id>/<uid>/<filename>', array('uid' => '.*?', 'filename' => '.*?'))
-	->defaults(array(
-		'controller'	=> 'Public',
-		'action'		=> 'caticonfile',
-	));
-Route::set('catpdffile', 'catpdffile/<id>/<uid>/<filename>', array('uid' => '.*?', 'filename' => '.*?'))
-	->defaults(array(
-		'controller'	=> 'Public',
-		'action'		=> 'catpdffile',
-	));
-Route::set('file', 'file/<id>/<uid>/<filename>', array('uid' => '.*?', 'filename' => '.*?'))
-	->defaults(array(
-		'controller'	=> 'Public',
-		'action'		=> 'file',
-	));
-Route::set('om-oss', 'om-oss')
-	->defaults(array(
-		'controller'	=> 'Public',
-		'action'		=> 'about',
-	));
+// 
+//
+// Route::set('om-oss', 'om-oss')
+// 	->defaults(array(
+// 		'controller'	=> 'Public',
+// 		'action'		=> 'about',
+// 	));
 
 Route::set('http404', 'http404')
 	->defaults(array(
