@@ -374,17 +374,17 @@ CREATE TABLE `categories` (
   `ord` int(11) DEFAULT NULL,
   `heading` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
   `description` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `icon_filename` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `icon_filesize` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `icon_uid` varchar(32) COLLATE utf8_danish_ci DEFAULT NULL,
-  `animation_property` tinyint(1) NOT NULL DEFAULT '0',
-  `pdf_filename` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `pdf_filesize` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `pdf_uid` varchar(32) COLLATE utf8_danish_ci DEFAULT NULL,
-  `pdf_title` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
+  `url_title` varchar(128) COLLATE utf8_danish_ci DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `is_new` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `ord` (`ord`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+  UNIQUE KEY `url_title` (`url_title`),
+  KEY `ord` (`ord`),
+  KEY `category_id` (`category_id`),
+  KEY `is_new` (`is_new`,`category_id`),
+  KEY `is_new_2` (`is_new`,`url_title`),
+  CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -393,16 +393,30 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'2016-06-09 06:32:57','2016-07-08 10:45:52',49,-7,'Bad','Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Null','bad.svg','3206','5ebbfa83101b907a0c8dce8a1a3b23a1',0,'3.jpg','562735','8e8301dcc1ba56f40c130a656f959220','Inceptos Ornare');
-INSERT INTO `categories` VALUES (2,'2016-06-09 06:33:32','2016-08-30 13:52:17',23,-6,'Bolig','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit alique','Bolig.svg','1117','16f7f8883177a0caea7ca93691b4db09',0,'pdf-test.pdf','20597','ec5ac1eae7695967981fc18c97c03d1b','Inceptos Ornare');
-INSERT INTO `categories` VALUES (3,'2016-06-09 06:34:19','2016-08-30 13:54:05',28,-3,'Bruer','Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucib','bruer.svg','1883','93cf04494ad035122dd6de160cf637b6',0,'pdf-test.pdf','20597','968b100d8e66aa0771edaacbe148bdde','Inceptos Ornare');
-INSERT INTO `categories` VALUES (4,'2016-06-09 06:34:34','2016-06-30 08:22:14',17,-2,'Helse og omsorg','Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Etiam porta','helse.svg','1448','fcf8576ea7d989c7e987b36d6d6f7cb2',0,'pdf-test.pdf','20597','5b8ac88e78796be32974e29e36a88748','Inceptos Ornare');
-INSERT INTO `categories` VALUES (5,'2016-06-09 06:34:45','2016-08-30 13:47:56',20,-1,'Næring','Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis','ARBEIDSPLASSER.svg','2616','6ad0a8c4b532349b834701735b303f90',0,'pdf-test.pdf','20597','7985c38f3ab1bce1cc5b29e58412ba98','Inceptos Ornare');
-INSERT INTO `categories` VALUES (6,'2016-06-09 06:34:55','2016-06-29 12:05:24',15,0,'Kultur','Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis e','kultur.svg','754','2c424d6c061c0330f2dbcf670cf7cd00',1,'pdf-test.pdf','20597','b6c3f5e8259be16d674d078885359139','Inceptos Ornare');
-INSERT INTO `categories` VALUES (7,'2016-06-09 06:35:03','2016-06-29 12:05:24',16,1,'Plan','Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Nullam id dolo','plan.svg','1557','4ba5b5afc49f457d00e47fd9875bf7a5',1,'pdf-test.pdf','20597','15aaf7b2bc0e2560dc591dd78760071e','Inceptos Ornare');
-INSERT INTO `categories` VALUES (8,'2016-06-09 06:35:13','2016-08-30 13:59:56',20,2,'Infrastruktur','Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Lorem i','Infrastructure_Blue.svg','1066','4025f1e0b5c9225d6374f992043b8314',0,'pdf-test.pdf','20597','f2ed9f35c6824242a008d0d0baa2356f','Inceptos Ornare');
-INSERT INTO `categories` VALUES (9,'2016-06-09 06:35:23','2016-06-29 12:05:24',15,3,'Undervisning','Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam.','undervisning.svg','687','29e2c284c05d767e839e9f18c9517595',1,'pdf-test.pdf','20597','2a72e0091c430727e185f734a09add37','Inceptos Ornare');
-INSERT INTO `categories` VALUES (12,'2016-06-29 12:04:50','2016-08-30 13:55:26',6,-5,'Enebolig / Hytte','Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilis','enebolig.svg','1454','573b3ddd107994d6eac8d546a41400c5',0,'5.JPG','4222290','4fdb35c65a165f3bbdef9d931e86e7ac','pdf title example');
+INSERT INTO `categories` VALUES (13,'2016-12-27 13:36:41','2016-12-27 14:03:28',4,0,'Средства защиты растений','Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.','средства-защиты-растений',NULL,0);
+INSERT INTO `categories` VALUES (14,'2016-12-27 13:38:22','2016-12-27 14:10:08',3,1,'Семена и посевной материал','Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.','семена-и-посевной-материал',NULL,0);
+INSERT INTO `categories` VALUES (15,'2016-12-27 13:39:29','2016-12-27 14:11:08',3,2,'Газонные травы','Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl cons','газонные-травы',NULL,0);
+INSERT INTO `categories` VALUES (16,'2016-12-27 13:39:52','2016-12-27 14:11:52',3,3,'Техника и садовый инструмент','Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere vel','техника-и-садовый-инструмент',NULL,0);
+INSERT INTO `categories` VALUES (17,'2016-12-27 13:40:19','2016-12-27 14:12:47',3,4,'Для дачи и отдыха','Donec id elit non mi porta gravida at eget metus. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed conse','для-дачи-и-отдыха',NULL,0);
+INSERT INTO `categories` VALUES (19,'2016-12-27 14:01:02',NULL,0,0,'Гербициды','Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas fa','гербициды',13,0);
+INSERT INTO `categories` VALUES (20,'2016-12-27 14:01:41',NULL,0,1,'Инсектициды','Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringil','инсектициды',13,0);
+INSERT INTO `categories` VALUES (21,'2016-12-27 14:02:07',NULL,0,2,'Фунгициды','Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit temp','фунгициды',13,0);
+INSERT INTO `categories` VALUES (22,'2016-12-27 14:02:24',NULL,0,3,'Протравители','Donec sed odio dui. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. V','протравители',13,0);
+INSERT INTO `categories` VALUES (23,'2016-12-27 14:02:50',NULL,0,4,'Родентициды','Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus porttitor.','родентициды',13,0);
+INSERT INTO `categories` VALUES (24,'2016-12-27 14:03:11',NULL,0,5,'Прилипатели','Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.','прилипатели',13,0);
+INSERT INTO `categories` VALUES (25,'2016-12-27 14:03:21',NULL,0,6,'Биопрепараты','Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Duis mollis, est non commodo luctus, nisi erat por','биопрепараты',13,0);
+INSERT INTO `categories` VALUES (26,'2016-12-27 14:06:12','2016-12-27 14:07:15',2,5,'Саженцы деревьев и растений','Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum.','саженцы-деревьев-и-растений',NULL,0);
+INSERT INTO `categories` VALUES (27,'2016-12-27 14:06:56',NULL,0,0,'Яблоня','Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac','яблоня',26,0);
+INSERT INTO `categories` VALUES (28,'2016-12-27 14:07:08',NULL,0,1,'Груша','Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum','груша',26,0);
+INSERT INTO `categories` VALUES (30,'2016-12-27 14:09:46',NULL,0,0,'Баклажан','Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutr','баклажан',14,0);
+INSERT INTO `categories` VALUES (31,'2016-12-27 14:09:55',NULL,0,1,'Горох','Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas se','горох',14,0);
+INSERT INTO `categories` VALUES (32,'2016-12-27 14:10:04',NULL,0,2,'Дыня','Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.','дыня',14,0);
+INSERT INTO `categories` VALUES (34,'2016-12-27 14:11:18',NULL,0,0,'Секаторы','Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum mass','секаторы',16,0);
+INSERT INTO `categories` VALUES (35,'2016-12-27 14:11:24','2016-12-27 14:11:31',1,1,'Системы полива','Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget l','системы-полива',16,0);
+INSERT INTO `categories` VALUES (36,'2016-12-27 14:11:47',NULL,0,2,'Агроволокно','Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.','агроволокно',16,0);
+INSERT INTO `categories` VALUES (37,'2016-12-27 14:12:22',NULL,0,0,'Защита от грызунов','Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean','защита-от-грызунов',17,0);
+INSERT INTO `categories` VALUES (38,'2016-12-27 14:12:33',NULL,0,1,'Защита от кротов','Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venena','защита-от-кротов',17,0);
+INSERT INTO `categories` VALUES (39,'2016-12-27 14:12:46',NULL,0,2,'Защита от насекомых','Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Cum sociis natoq','защита-от-насекомых',17,0);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -473,48 +487,6 @@ CREATE TABLE `categories_projects` (
 
 LOCK TABLES `categories_projects` WRITE;
 /*!40000 ALTER TABLE `categories_projects` DISABLE KEYS */;
-INSERT INTO `categories_projects` VALUES (6,'2016-06-20 07:32:31','2016-06-22 12:21:49',2,1098,3,0);
-INSERT INTO `categories_projects` VALUES (14,'2016-06-20 07:32:30','2016-06-30 08:21:54',2,1096,2,1);
-INSERT INTO `categories_projects` VALUES (52,'2016-06-20 07:32:30','2016-06-30 08:32:33',3,1094,1,0);
-INSERT INTO `categories_projects` VALUES (68,'2016-06-20 07:32:30','2016-06-30 08:21:55',2,1101,2,1);
-INSERT INTO `categories_projects` VALUES (69,'2016-06-20 07:32:30','2016-06-30 08:22:05',2,1101,3,1);
-INSERT INTO `categories_projects` VALUES (73,'2016-06-20 07:32:30','2016-06-30 08:22:06',2,1102,3,1);
-INSERT INTO `categories_projects` VALUES (74,'2016-06-20 07:32:30','2016-06-22 12:21:15',1,1102,4,0);
-INSERT INTO `categories_projects` VALUES (75,'2016-06-20 07:32:30','2016-06-30 08:22:11',2,1103,4,1);
-INSERT INTO `categories_projects` VALUES (76,'2016-06-20 07:32:30','2016-06-22 12:21:19',1,1103,5,0);
-INSERT INTO `categories_projects` VALUES (77,'2016-06-20 07:32:30','2016-06-30 08:22:18',2,1104,5,1);
-INSERT INTO `categories_projects` VALUES (78,'2016-06-20 07:32:30','2016-06-22 12:21:20',1,1104,6,0);
-INSERT INTO `categories_projects` VALUES (79,'2016-06-20 07:32:30','2016-06-22 12:21:21',1,1105,6,0);
-INSERT INTO `categories_projects` VALUES (80,'2016-06-20 07:32:30','2016-06-22 12:21:22',1,1105,7,0);
-INSERT INTO `categories_projects` VALUES (91,'2016-06-20 07:32:30','2016-06-30 08:22:19',2,1112,5,1);
-INSERT INTO `categories_projects` VALUES (92,'2016-06-20 07:32:30','2016-06-30 08:22:13',2,1111,4,1);
-INSERT INTO `categories_projects` VALUES (93,'2016-06-20 07:32:30','2016-06-22 12:21:23',1,1109,3,0);
-INSERT INTO `categories_projects` VALUES (94,'2016-06-20 07:32:30','2016-06-22 12:21:24',1,1108,2,0);
-INSERT INTO `categories_projects` VALUES (96,'2016-06-20 07:32:30','2016-06-22 12:21:25',1,1106,8,0);
-INSERT INTO `categories_projects` VALUES (97,'2016-06-20 07:32:30','2016-06-22 12:21:26',1,1106,9,0);
-INSERT INTO `categories_projects` VALUES (104,'2016-06-20 07:32:30','2016-06-22 12:21:26',1,1113,9,0);
-INSERT INTO `categories_projects` VALUES (105,'2016-06-20 07:32:30','2016-06-22 12:21:27',1,1114,8,0);
-INSERT INTO `categories_projects` VALUES (106,'2016-06-20 07:32:30','2016-06-22 12:21:27',1,1115,7,0);
-INSERT INTO `categories_projects` VALUES (107,'2016-06-20 07:32:30','2016-06-22 12:21:28',1,1116,6,0);
-INSERT INTO `categories_projects` VALUES (108,'2016-06-20 07:32:30','2016-06-30 08:22:20',2,1117,5,1);
-INSERT INTO `categories_projects` VALUES (109,'2016-06-20 07:32:30','2016-06-22 12:21:29',1,1118,4,0);
-INSERT INTO `categories_projects` VALUES (110,'2016-06-20 07:32:30','2016-06-22 12:21:32',1,1119,3,0);
-INSERT INTO `categories_projects` VALUES (111,'2016-06-20 07:32:30','2016-06-22 12:21:33',1,1120,4,0);
-INSERT INTO `categories_projects` VALUES (112,'2016-06-20 07:32:30','2016-06-22 12:21:34',1,1121,5,0);
-INSERT INTO `categories_projects` VALUES (116,'2016-06-20 07:32:30','2016-06-22 12:21:35',1,1124,7,0);
-INSERT INTO `categories_projects` VALUES (117,'2016-06-20 07:32:30','2016-06-22 12:21:35',1,1124,8,0);
-INSERT INTO `categories_projects` VALUES (118,'2016-06-20 07:32:30','2016-06-22 12:21:36',1,1124,9,0);
-INSERT INTO `categories_projects` VALUES (168,'2016-07-08 08:33:58',NULL,0,1122,6,0);
-INSERT INTO `categories_projects` VALUES (172,'2016-07-08 10:42:38',NULL,0,1123,8,0);
-INSERT INTO `categories_projects` VALUES (173,'2016-07-08 10:42:38',NULL,0,1123,9,0);
-INSERT INTO `categories_projects` VALUES (189,'2016-07-15 11:11:55',NULL,0,1097,2,0);
-INSERT INTO `categories_projects` VALUES (190,'2016-07-15 11:12:00',NULL,0,1095,1,0);
-INSERT INTO `categories_projects` VALUES (200,'2016-08-31 14:48:00',NULL,0,1107,1,0);
-INSERT INTO `categories_projects` VALUES (201,'2016-08-31 14:48:00',NULL,0,1107,2,0);
-INSERT INTO `categories_projects` VALUES (202,'2016-08-31 14:48:00',NULL,0,1107,7,0);
-INSERT INTO `categories_projects` VALUES (209,'2016-09-04 08:41:32',NULL,0,1099,1,0);
-INSERT INTO `categories_projects` VALUES (210,'2016-09-04 08:41:33',NULL,0,1099,2,0);
-INSERT INTO `categories_projects` VALUES (211,'2016-09-04 08:41:33',NULL,0,1099,7,0);
 /*!40000 ALTER TABLE `categories_projects` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -877,9 +849,9 @@ CREATE TABLE `homeslides` (
 
 LOCK TABLES `homeslides` WRITE;
 /*!40000 ALTER TABLE `homeslides` DISABLE KEYS */;
-INSERT INTO `homeslides` VALUES (6,'2016-12-27 07:35:06','2016-12-27 07:35:06',1,-1,'1','af5629a4dec04093e191270916ae0e31','jpeg','1920','1200');
-INSERT INTO `homeslides` VALUES (7,'2016-12-27 07:35:14','2016-12-27 07:35:14',1,-2,'2','3a014942940db77cd75742b4b343b5dd','jpeg','2560','1600');
-INSERT INTO `homeslides` VALUES (8,'2016-12-27 07:35:26','2016-12-27 07:35:26',1,-3,'3','bd993e9921e1131fef606fcd99a03494','png','1920','1200');
+INSERT INTO `homeslides` VALUES (6,'2016-12-27 07:35:06','2016-12-27 09:33:14',3,-3,'1','af5629a4dec04093e191270916ae0e31','jpeg','1920','1200');
+INSERT INTO `homeslides` VALUES (7,'2016-12-27 07:35:14','2016-12-27 09:33:14',2,-1,'2','3a014942940db77cd75742b4b343b5dd','jpeg','2560','1600');
+INSERT INTO `homeslides` VALUES (8,'2016-12-27 07:35:26','2016-12-27 09:33:14',2,-2,'3','bd993e9921e1131fef606fcd99a03494','png','1920','1200');
 /*!40000 ALTER TABLE `homeslides` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1374,7 +1346,7 @@ INSERT INTO `sessions` VALUES ('5861253caf3a83-58001261',1482822661,'YToyOntzOjY
 INSERT INTO `sessions` VALUES ('586213c70b8f81-36188656',1482822828,'YToyOntzOjY6ImNhdF9pZCI7aTowO3M6MTE6Imxhc3RfYWN0aXZlIjtpOjE0ODI4MjI4Mjg7fQ==');
 INSERT INTO `sessions` VALUES ('586214125a32e0-43058850',1482822674,'YToxOntzOjExOiJsYXN0X2FjdGl2ZSI7aToxNDgyODIyNjc0O30=');
 INSERT INTO `sessions` VALUES ('5862141261eee5-90371197',1482822674,'YToxOntzOjExOiJsYXN0X2FjdGl2ZSI7aToxNDgyODIyNjc0O30=');
-INSERT INTO `sessions` VALUES ('5862141e9b2bb3-56400563',1482824132,'YTo4OntzOjY6ImNhdF9pZCI7aTowO3M6MTE6Imxhc3RfYWN0aXZlIjtpOjE0ODI4MjQxMzI7czoxMzoiYWRtaW46dXNlcl9pZCI7czoxOiIzIjtzOjE0OiJmaWxlX3VwbG9hZF9pZCI7aTo3O3M6Mzc6IkJhY2tlbmRfSG9tZV9TbGlkZXNob3dfR3JpZC5wYWdlci5udW0iO2k6MTtzOjM4OiJCYWNrZW5kX0hvbWVfU2xpZGVzaG93X0dyaWQucGFnZXIuc2l6ZSI7aToxMDtzOjM4OiJCYWNrZW5kX0hvbWVfU2xpZGVzaG93X0dyaWQuc29ydGVyLmRpciI7TjtzOjM5OiJCYWNrZW5kX0hvbWVfU2xpZGVzaG93X0dyaWQuc29ydGVyLm5hbWUiO047fQ==');
+INSERT INTO `sessions` VALUES ('5862141e9b2bb3-56400563',1482847968,'YToxNjp7czo2OiJjYXRfaWQiO2k6MDtzOjExOiJsYXN0X2FjdGl2ZSI7aToxNDgyODQ3OTY4O3M6MTM6ImFkbWluOnVzZXJfaWQiO3M6MToiMyI7czoxNDoiZmlsZV91cGxvYWRfaWQiO2k6MTA7czozNzoiQmFja2VuZF9Ib21lX1NsaWRlc2hvd19HcmlkLnBhZ2VyLm51bSI7aToxO3M6Mzg6IkJhY2tlbmRfSG9tZV9TbGlkZXNob3dfR3JpZC5wYWdlci5zaXplIjtpOjEwO3M6Mzg6IkJhY2tlbmRfSG9tZV9TbGlkZXNob3dfR3JpZC5zb3J0ZXIuZGlyIjtOO3M6Mzk6IkJhY2tlbmRfSG9tZV9TbGlkZXNob3dfR3JpZC5zb3J0ZXIubmFtZSI7TjtzOjMzOiJCYWNrZW5kX0NhdGVnb3JpZXNfR3JpZC5wYWdlci5udW0iO2k6MTtzOjM0OiJCYWNrZW5kX0NhdGVnb3JpZXNfR3JpZC5wYWdlci5zaXplIjtpOjEwO3M6MzQ6IkJhY2tlbmRfQ2F0ZWdvcmllc19HcmlkLnNvcnRlci5kaXIiO047czozNToiQmFja2VuZF9DYXRlZ29yaWVzX0dyaWQuc29ydGVyLm5hbWUiO047czo0NzoiQmFja2VuZF9DYXRlZ29yaWVzX1N1YmNhdGVnb3JpZXNfR3JpZC5wYWdlci5udW0iO2k6MTtzOjQ4OiJCYWNrZW5kX0NhdGVnb3JpZXNfU3ViY2F0ZWdvcmllc19HcmlkLnBhZ2VyLnNpemUiO2k6MTA7czo0ODoiQmFja2VuZF9DYXRlZ29yaWVzX1N1YmNhdGVnb3JpZXNfR3JpZC5zb3J0ZXIuZGlyIjtOO3M6NDk6IkJhY2tlbmRfQ2F0ZWdvcmllc19TdWJjYXRlZ29yaWVzX0dyaWQuc29ydGVyLm5hbWUiO047fQ==');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1558,4 +1530,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-27  9:35:40
+-- Dump completed on 2016-12-27 16:13:11

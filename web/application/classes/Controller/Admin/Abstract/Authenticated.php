@@ -35,6 +35,10 @@ abstract class Controller_Admin_Abstract_Authenticated extends Controller_Admin_
 					'title'	=> 'Home',
 					'url'	=> 'admin/home'
 				],
+				self::MENU_PRODUCTS => [
+					'title'	=> 'Products',
+					'url'	=> 'admin/products'
+				],
 				// self::MENU_PROJECTS => [
 				// 	'title'	=> 'Projects',
 				// 	'url'	=> 'admin/projects'

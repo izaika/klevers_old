@@ -1,42 +1,44 @@
 <?php
 
-class Backend_Categories_Grid extends AVO_Data_Grid {
+class Backend_Categories_Subcategories_Grid extends AVO_Data_Grid {
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->clear_cache 	= true;
+		$this->clear_cache = true;
 
 		$this->datasource = new AVO_Data_Source_DB([
-			'count_query'		=> 'SELECT COUNT(*) FROM categories',
-			'select_query'		=> 'SELECT * FROM categories ORDER BY ord',
+			'count_query'		=> 'SELECT COUNT(*) FROM categories WHERE is_new = 0 AND category_id = :category_id',
+			'select_query'		=> 'SELECT * FROM categories WHERE is_new = 0 AND category_id = :category_id ORDER BY ord',
 			'find_query'		=> 'SELECT * FROM categories WHERE id = :id',
 			'delete_query'		=> 'DELETE FROM categories WHERE id = :id',
 
 			'update_query'		=>
 				'UPDATE categories
 					SET
-						heading				= :heading,
-						description			= :description,
-						animation_property	= :animation_property,
-						pdf_title 			= :pdf_title
+						heading		= :heading,
+						description	= :description,
+						url_title	= :url_title
+
 					WHERE id = :id',
 
 			'insert_query'	=>
 				'INSERT INTO categories (
 					ord,
+					is_new,
+					category_id,
 					heading,
 					description,
-					animation_property,
-					pdf_title
+					url_title
 				)
 				VALUES (
-					(SELECT * FROM (SELECT IFNULL(MIN(ord) - 1, 0) FROM categories) assets_ord),
+					(SELECT * FROM (SELECT IFNULL(MAX(ord) + 1, 0) FROM categories WHERE category_id = :category_id) assets_ord),
+					0,
+					:category_id,
 					:heading,
 					:description,
-					:animation_property,
-					:pdf_title
+					:url_title
 				)',
 
 			'custom_errors' => [
@@ -45,14 +47,16 @@ class Backend_Categories_Grid extends AVO_Data_Grid {
 
 			'move_parameters'	=> [
 				'table'			=> 'categories',
-				'where'			=> 'id IS NOT NULL',
+				'where'			=> 'is_new = 0 AND category_id = :category_id',
 				'order_by'		=> 'ord'
 			],
+
+			'on_calc_parameter'	=> [$this, 'on_calc_data_source_parameter'],
 
 			'model_class_name'	=> 'Model_Category',
 		]);
 
-		$edit_form = new Backend_Categories_Form;
+		$edit_form = new Backend_Categories_Subcategories_Form;
 		$edit_form->datasource = $this->datasource;
 		$this->forms = [
 			'edit_form'	=> $edit_form
@@ -81,28 +85,6 @@ class Backend_Categories_Grid extends AVO_Data_Grid {
 				'width'			=> 20
 			]),
 			new AVO_Field([
-				'name'			=> 'icon',
-				'type'			=> AVO_Field::TYPE_STRING,
-				'title'			=> 'SVG Icon preview',
-				'width'			=> 150,
-				'sortable'		=> false,
-				'encoded'		=> true,
-				'calculated'	=> true,
-			]),
-			new AVO_Field([
-				'name'			=> 'animation_property',
-				'type'			=> AVO_Field::TYPE_STRING,
-				'hidden'		=> true,
-				'sortable'		=> false,
-			]),
-			new AVO_Field([
-				'name'			=> 'public_animation_property',
-				'type'			=> AVO_Field::TYPE_STRING,
-				'title'			=> 'SVG color animation property',
-				'sortable'		=> false,
-				'calculated'	=> true,
-			]),
-			new AVO_Field([
 				'name'			=> 'heading',
 				'type'			=> AVO_Field::TYPE_STRING,
 				'title'			=> 'Heading',
@@ -111,57 +93,26 @@ class Backend_Categories_Grid extends AVO_Data_Grid {
 			new AVO_Field([
 				'name'			=> 'description',
 				'type'			=> AVO_Field::TYPE_STRING,
-				'title'			=> 'Short description',
+				'title'			=> 'Description',
 				'sortable'		=> false,
 				'encoded'		=> true,
 				'function'		=> function ($val) {
 					return nl2br(Text::limit_chars(strip_tags(preg_replace("=<br */?>=i", "\n", $val))));
 				},
 			]),
+			new AVO_Field([
+				'name'			=> 'url_title',
+				'type'			=> AVO_Field::TYPE_STRING,
+				'title'			=> 'URL title',
+				'sortable'		=> false,
+			]),
+		]);
+
+		$this->parameters = new AVO_Controls_List([
+			new AVO_Field([
+				'name'			=> 'category_id',
+				'type'			=> AVO_Field::TYPE_INT,
+			]),
 		]);
 	}
-
-
-	public function on_calc()
-	{
-		$model = $this->fields->model();
-		$animate_stroke = $model->animation_property == $model::ANIMATE_STROKE;
-		$animation_class = $animate_stroke ? ' animate_stroke' : ' animate_fill';
-		$this->fields->icon->value($model->icon_uid ? '<div class="cat_icon'.$animation_class.'">'.file_get_contents($model->file_storage()).'</div>' : "");
-
-		$this->fields->public_animation_property->value($animate_stroke ? 'Stroke' : 'Fill');
-		// $this->fields->icon->value(HTML::image($model->file_url()));
-	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
