@@ -861,23 +861,14 @@ CREATE TABLE `homeslides` (
   `modified` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `modify_count` int(11) NOT NULL DEFAULT '0',
   `ord` int(11) DEFAULT NULL,
-  `project_id` int(11) DEFAULT NULL,
-  `link_type` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `heading` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `subheading` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
-  `url` varchar(256) COLLATE utf8_danish_ci DEFAULT NULL,
   `title` varchar(128) COLLATE utf8_danish_ci DEFAULT NULL,
   `uid` varchar(32) COLLATE utf8_danish_ci DEFAULT NULL,
   `ext` varchar(4) COLLATE utf8_danish_ci DEFAULT NULL,
   `width` varchar(5) COLLATE utf8_danish_ci DEFAULT NULL,
   `height` varchar(5) COLLATE utf8_danish_ci DEFAULT NULL,
-  `open_link_in_new_window` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `video_url` varchar(512) COLLATE utf8_danish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ord` (`ord`),
-  KEY `project_id` (`project_id`),
-  CONSTRAINT `homeslides_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+  KEY `ord` (`ord`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -886,9 +877,9 @@ CREATE TABLE `homeslides` (
 
 LOCK TABLES `homeslides` WRITE;
 /*!40000 ALTER TABLE `homeslides` DISABLE KEYS */;
-INSERT INTO `homeslides` VALUES (1,'2016-06-06 07:09:46','2016-09-05 08:25:37',8,-1,1099,1,NULL,'Pharetra Ridiculus',NULL,NULL,NULL,NULL,NULL,NULL,0,'https://player.vimeo.com/external/180742892.sd.mp4?s=2491cd1991a29f2e8743a2fcf95139041f7e39b1&profile_id=165');
-INSERT INTO `homeslides` VALUES (4,'2016-06-06 08:23:58','2016-06-20 14:46:58',7,0,NULL,0,'Nulla vitae elit libero, a pharetra augue.','Cursus Nibh',NULL,'2','558d4b9c0580fac68c7e9c93740c6291','jpeg','2500','2433',0,NULL);
-INSERT INTO `homeslides` VALUES (5,'2016-06-06 08:24:38','2016-06-06 10:42:36',5,1,NULL,2,'Morbi leo risus, porta ac consectetur ac, vestibulum at eros.','Vehicula Ligula','http://idangero.us/swiper/api/','3','51aad8581c91a1cde5fdf42e80a379e5','jpeg','1920','1200',1,NULL);
+INSERT INTO `homeslides` VALUES (6,'2016-12-27 07:35:06','2016-12-27 07:35:06',1,-1,'1','af5629a4dec04093e191270916ae0e31','jpeg','1920','1200');
+INSERT INTO `homeslides` VALUES (7,'2016-12-27 07:35:14','2016-12-27 07:35:14',1,-2,'2','3a014942940db77cd75742b4b343b5dd','jpeg','2560','1600');
+INSERT INTO `homeslides` VALUES (8,'2016-12-27 07:35:26','2016-12-27 07:35:26',1,-3,'3','bd993e9921e1131fef606fcd99a03494','png','1920','1200');
 /*!40000 ALTER TABLE `homeslides` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1379,7 +1370,11 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('5861253caf3a83-58001261',1482767849,'YToyOntzOjY6ImNhdF9pZCI7aTowO3M6MTE6Imxhc3RfYWN0aXZlIjtpOjE0ODI3Njc4NDk7fQ==');
+INSERT INTO `sessions` VALUES ('5861253caf3a83-58001261',1482822661,'YToyOntzOjY6ImNhdF9pZCI7aTowO3M6MTE6Imxhc3RfYWN0aXZlIjtpOjE0ODI4MjI2NjE7fQ==');
+INSERT INTO `sessions` VALUES ('586213c70b8f81-36188656',1482822828,'YToyOntzOjY6ImNhdF9pZCI7aTowO3M6MTE6Imxhc3RfYWN0aXZlIjtpOjE0ODI4MjI4Mjg7fQ==');
+INSERT INTO `sessions` VALUES ('586214125a32e0-43058850',1482822674,'YToxOntzOjExOiJsYXN0X2FjdGl2ZSI7aToxNDgyODIyNjc0O30=');
+INSERT INTO `sessions` VALUES ('5862141261eee5-90371197',1482822674,'YToxOntzOjExOiJsYXN0X2FjdGl2ZSI7aToxNDgyODIyNjc0O30=');
+INSERT INTO `sessions` VALUES ('5862141e9b2bb3-56400563',1482824132,'YTo4OntzOjY6ImNhdF9pZCI7aTowO3M6MTE6Imxhc3RfYWN0aXZlIjtpOjE0ODI4MjQxMzI7czoxMzoiYWRtaW46dXNlcl9pZCI7czoxOiIzIjtzOjE0OiJmaWxlX3VwbG9hZF9pZCI7aTo3O3M6Mzc6IkJhY2tlbmRfSG9tZV9TbGlkZXNob3dfR3JpZC5wYWdlci5udW0iO2k6MTtzOjM4OiJCYWNrZW5kX0hvbWVfU2xpZGVzaG93X0dyaWQucGFnZXIuc2l6ZSI7aToxMDtzOjM4OiJCYWNrZW5kX0hvbWVfU2xpZGVzaG93X0dyaWQuc29ydGVyLmRpciI7TjtzOjM5OiJCYWNrZW5kX0hvbWVfU2xpZGVzaG93X0dyaWQuc29ydGVyLm5hbWUiO047fQ==');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1563,4 +1558,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-26 17:58:19
+-- Dump completed on 2016-12-27  9:35:40

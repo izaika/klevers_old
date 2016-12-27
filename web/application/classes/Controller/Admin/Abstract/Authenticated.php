@@ -3,11 +3,11 @@
 abstract class Controller_Admin_Abstract_Authenticated extends Controller_Admin_Abstract {
 
 	const MENU_HOME			= 1;
-	const MENU_PROJECTS		= 2;
-	const MENU_ABOUT		= 3;
-	const MENU_BLOG			= 4;
-	const MENU_CONTACT		= 5;
-	const MENU_CATEGORIES	= 6;
+	// const MENU_PROJECTS		= 2;
+	// const MENU_ABOUT		= 3;
+	// const MENU_BLOG			= 4;
+	// const MENU_CONTACT		= 5;
+	// const MENU_CATEGORIES	= 6;
 	const MENU_SETTINGS		= 100;
 
 
@@ -34,26 +34,26 @@ abstract class Controller_Admin_Abstract_Authenticated extends Controller_Admin_
 					'title'	=> 'Home',
 					'url'	=> 'admin/home'
 				],
-				self::MENU_PROJECTS => [
-					'title'	=> 'Projects',
-					'url'	=> 'admin/projects'
-				],
-				self::MENU_ABOUT => [
-					'title'	=> 'About',
-					'url'	=> 'admin/about'
-				],
-				self::MENU_BLOG => [
-					'title'	=> 'Blog',
-					'url'	=> 'admin/blog'
-				],
-				self::MENU_CONTACT => [
-					'title'	=> 'Contact',
-					'url'	=> 'admin/contact'
-				],
-				self::MENU_CATEGORIES => [
-					'title'	=> 'Categories',
-					'url'	=> 'admin/categories'
-				],
+				// self::MENU_PROJECTS => [
+				// 	'title'	=> 'Projects',
+				// 	'url'	=> 'admin/projects'
+				// ],
+				// self::MENU_ABOUT => [
+				// 	'title'	=> 'About',
+				// 	'url'	=> 'admin/about'
+				// ],
+				// self::MENU_BLOG => [
+				// 	'title'	=> 'Blog',
+				// 	'url'	=> 'admin/blog'
+				// ],
+				// self::MENU_CONTACT => [
+				// 	'title'	=> 'Contact',
+				// 	'url'	=> 'admin/contact'
+				// ],
+				// self::MENU_CATEGORIES => [
+				// 	'title'	=> 'Categories',
+				// 	'url'	=> 'admin/categories'
+				// ],
 				self::MENU_SETTINGS => [
 					'title'	=> __('Settings'),
 					'url'	=> 'admin/settings'
