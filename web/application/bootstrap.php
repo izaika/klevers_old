@@ -154,13 +154,13 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>(/<uid>(/<filename>)))))
 	'directory'		=> 'admin',		'controller'	=> 'Settings',
 	'action'		=> 'index',
 ]);
-// 
-//
-// Route::set('om-oss', 'om-oss')
-// 	->defaults(array(
-// 		'controller'	=> 'Public',
-// 		'action'		=> 'about',
-// 	));
+
+
+Route::set('товары', 'товары')
+	->defaults(array(
+		'controller'	=> 'Public',
+		'action'		=> 'products',
+	));
 
 Route::set('http404', 'http404')
 	->defaults(array(
