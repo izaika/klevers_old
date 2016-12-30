@@ -63,6 +63,9 @@ define 'app', ['jquery'], ($) ->
 				when 'index'
 					require ['cs!pages/index'], (index) ->
 						index.init()
+				when 'products'
+					require ['cs!pages/products'], (products) ->
+						products.init()
 				when 'exception404'
 					require ['cs!pages/exception404'], (exception404) ->
 						exception404.init()
